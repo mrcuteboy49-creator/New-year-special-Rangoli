@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="gu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3b174d">
+<title>નૂતનવર્ષની શુભેચ્છાઓ</title>
+<style>
+:root{--plum:#3b174d;--gold:#f5c86b;--cream:#fff8e9;--pink:#f7d7df}
+*{box-sizing:border-box} body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,"Noto Sans Gujarati",sans-serif;background:radial-gradient(circle at top,#6a326f,#281238 72%);color:var(--cream);display:flex;justify-content:center;padding:22px 14px}
+main{width:min(100%,520px);margin:auto}.shell{border:1px solid #ffffff2b;border-radius:28px;padding:24px 18px;background:#ffffff0d;box-shadow:0 18px 55px #10081780;text-align:center}
+.eyebrow{color:var(--gold);letter-spacing:2px;font-size:12px;font-weight:700}.rangoli{font-size:42px;margin:8px 0}.title{font-size:clamp(25px,7vw,34px);margin:5px 0 8px}.sub{color:#f2e5ef;line-height:1.6;margin:0 auto 20px;max-width:360px}
+.choices{display:grid;gap:10px;margin-top:18px}.choice,.next,.pay{border:0;border-radius:16px;padding:15px 13px;font-size:17px;font-weight:750;cursor:pointer;color:var(--plum);background:linear-gradient(135deg,#ffe9ae,#f5c86b);box-shadow:0 5px 0 #b98234;text-align:center}.choice:active,.next:active,.pay:active{transform:translateY(2px);box-shadow:0 3px 0 #b98234}
+.hidden{display:none!important}.video-wrap{margin:16px auto 12px;border-radius:20px;overflow:hidden;background:#09070b;line-height:0}.video-wrap video{width:100%;max-height:65vh;object-fit:contain;background:#09070b}
+.next{width:100%;margin-top:14px}.hint{font-size:13px;color:#e8d6e9;line-height:1.55;margin:14px 4px 0}.pay-amount{font-size:48px;font-weight:900;color:var(--gold);margin:8px 0}.pay{display:block;text-decoration:none;width:100%;margin-top:12px}.fine{font-size:12px;color:#e8d6e9;margin-top:14px;line-height:1.6}
+.pill{display:inline-block;border:1px solid #ffffff45;border-radius:999px;padding:6px 12px;color:var(--gold);font-size:12px}
+</style>
+</head>
+<body><main><section class="shell">
+<div class="eyebrow">A LITTLE FESTIVE SURPRISE</div><div class="rangoli">🪷 ✨ 🪔</div>
+<section id="welcome">
+<div class="pill">નૂતનવર્ષ વિશેષ</div>
+<h1 class="title">તમને કેવી શુભેચ્છા ગમશે?</h1>
+<p class="sub">તમારી પસંદગી કરો અને તમારા માટે એક ખાસ શુભેચ્છા વીડિયો જુઓ. ❤️</p>
+<div class="choices">
+<button class="choice" data-video="video1.mp4">🙏 નવા વર્ષના રામ રામ</button>
+<button class="choice" data-video="video2.mp4">🌸 નૂતનવર્ષાભિનંદન</button>
+<button class="choice" data-video="video3.mp4">✨ સાલમુબારક</button>
+<button class="choice" data-video="video4.mp4">🎉 Happy New Year</button>
+<button class="choice" data-video="video5.mp4">💫 ઉપર આપેલામાંથી કંઈ પણ નહીં</button>
+</div>
+</section>
+<section id="greeting" class="hidden">
+<div class="pill">તમારા માટે ખાસ શુભેચ્છા</div><h2 class="title" id="greetingTitle">શુભેચ્છાઓ ❤️</h2>
+<div class="video-wrap"><video id="greetingVideo" playsinline controls preload="metadata"></video></div>
+<button class="next" id="toCat">આગળ વધો 🐱</button>
+<p class="hint">વીડિયો પૂરો થયા પછી પણ આગળ વધી શકો છો.</p>
+</section>
+<section id="cat" class="hidden">
+<div class="pill">એક નાનકડો સરપ્રાઇઝ</div><h2 class="title">આ ખાસ તમારા માટે! 🐾</h2>
+<div class="video-wrap"><video id="catVideo" playsinline controls preload="metadata"></video></div>
+<button class="next" id="toPay">આગળ ❤️</button>
+</section>
+<section id="payment" class="hidden">
+<div class="pill">તમારો પ્રેમભર્યો સહયોગ</div><h2 class="title">રંગોળી ગમી? ❤️</h2>
+<p class="sub">રંગોળી જોઈને QR scan કરી અને આ નાનકડી website વાપરી હોય, તો ₹10 ની ભેટ આપશો તો આનંદ થશે!</p>
+<div class="pay-amount">₹10</div>
+<a class="pay" id="payLink" href="#">UPI દ્વારા ₹10 આપો</a>
+<p class="fine">બટન દબાવ્યા પછી તમારા ફોનમાં ઉપલબ્ધ UPI app પસંદ કરો. Payment કરતાં પહેલાં નામ અને રકમ ચકાસો. Payment તમારી મંજૂરી પછી જ થશે.</p>
+<button class="next" id="restart" style="background:transparent;color:#fff;box-shadow:none;border:1px solid #ffffff55">ફરીથી શરૂઆત કરો</button>
+</section>
+</section><p class="fine" style="text-align:center">શુભ નૂતનવર્ષ ✨</p></main>
+<script>
+const $=id=>document.getElementById(id);
+const sections=["welcome","greeting","cat","payment"];
+function show(id){sections.forEach(s=>$(s).classList.toggle("hidden",s!==id));}
+document.querySelectorAll(".choice").forEach(btn=>btn.addEventListener("click",()=>{
+  $("greetingTitle").textContent=btn.textContent;
+  $("greetingVideo").src=btn.dataset.video;
+  $("greetingVideo").load(); show("greeting");
+  const p=$("greetingVideo").play(); if(p) p.catch(()=>{});
+}));
+$("toCat").addEventListener("click",()=>{
+  $("greetingVideo").pause(); $("catVideo").src="cat-video.mp4";
+  $("catVideo").load(); show("cat"); const p=$("catVideo").play(); if(p) p.catch(()=>{});
+});
+$("toPay").addEventListener("click",()=>{$("catVideo").pause();show("payment");});
+$("restart").addEventListener("click",()=>{$("greetingVideo").pause();$("catVideo").pause();show("welcome");});
+const upi="upi://pay?pa=nayukalena05-1@oksbi&pn=Nayan%20Kalena&am=10&cu=INR&tn=Rangoli%20QR%20Greeting";
+$("payLink").href=upi;
+</script></body></html>
